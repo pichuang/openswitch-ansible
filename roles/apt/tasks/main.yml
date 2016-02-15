@@ -1,0 +1,14 @@
+---
+- name: Update APT Cache
+  apt: update_cache=yes cache_valid_time=3600
+  tags: apt
+
+- name: Install required packages
+  apt: name={{ item }} state=present
+  with_items:
+    - vim
+    - tmux
+    - git
+    - htop
+    - software-properties-common
+  tags: apt

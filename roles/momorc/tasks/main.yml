@@ -1,0 +1,30 @@
+---
+- name: Clone pichuang/momorc config in root
+  git:
+    repo: https://github.com/pichuang/momorc
+    dest: /root/.momorc
+    update: no
+    accept_hostkey: true
+  tags: momorc
+
+- name: Install momorc in root
+  command: 'python install.py > /dev/null 2>&1'
+  run_once: true
+  args:
+    chdir: /root/.momorc
+  tags: momorc
+
+- name: Clone pichuang/momorc config in vagrant
+  git:
+    repo: https://github.com/pichuang/momorc
+    dest: /home/vagrant/.momorc
+    update: no
+    accept_hostkey: true
+  tags: momorc
+
+- name: Install momorc in vagrant
+  command: 'python install.py > /dev/null 2>&1'
+  run_once: true
+  args:
+    chdir: /home/vagrant/.momorc
+  tags: momorc

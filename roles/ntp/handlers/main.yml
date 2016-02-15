@@ -1,0 +1,3 @@
+---
+- name: Restart ntp daemon
+  service: name=ntp state=restarted
